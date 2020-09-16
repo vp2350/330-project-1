@@ -44,7 +44,7 @@ console.log("test");
         //let color = `rgb(${n % 256},0,255)`;
         //let aDegrees = (n * divergence) % 256;
         //let color = `rgb(${aDegrees},0,255)`;
-        let color = getRandomColor();
+        let color = `hsl(${phyllotaxis.n/5 % 181},80%,40%)`;
 
         drawCircle(ctx,x,y,2,color);
         phyllotaxis.n++;
