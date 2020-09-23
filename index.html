@@ -10,6 +10,60 @@
 </head>
 <body>
 <canvas id="canvas"></canvas>
-<section><h1>Click anywhere to create a phyllotaxis</h1></section>
+<section><h1>PHYLLOTAXIS PLAYGROUND!</h1></section>
+<section><h4>(Still need to do some css and code cleanup)</h4></section>
+<section><h3>Click anywhere to create a phyllotaxis</h3></section>
+<section>
+  <button id="clearButton">Clear Canvas</button>
+</section>
+<img id="emoji" src="grimacing-face-emoji-small.png" />
+<label>C-value: 
+	<select id="cValue">
+		<option value="1">1</option>
+		<option value="2" selected>2</option>
+		<option value="3">3</option>
+ 		<option value="4">4</option>
+         <option value="5">5</option>
+	</select>
+</label>
+<label>Divergence Angle: 
+	<select id="dAngle">
+		<option value="137.5" selected>137.5</option>
+		<option value="-137.5">-137.5</option>
+		<option value="137.0">137.0</option>
+ 		<option value="-137.0">-137.0</option>
+        <option value="138.0">138.0</option>
+        <option value="-138.0">-138.0</option>
+	</select>
+</label>
+<label>Dot Color Type: 
+	<select id="lineColorChooser">
+        <option value="HSL" selected>HSL</option>
+        <option value="Random">Random</option>
+        <option value="linearGradient">Linear Gradient</option>
+        <option value="radialGradient">Radial Gradient</option>
+        <option value="emojiPattern">Emoji</option>
+	</select>
+</label>
+<label>Radius Increase Rate: 
+	<select id="increaseValue">
+        <option value="1" selected>1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+
+	</select>
+</label>
+<label>Clear Screen on Settings Change? 
+	<select id="clearSettings">
+        <option value="yes">Yes</option>
+        <option value="yesP">Yes, but keep radius progress</option>
+        <option value="no" selected>No</option>
+	</select>
+</label>
 </body>
 </html>
