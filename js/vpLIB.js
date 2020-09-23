@@ -1,16 +1,19 @@
 
-function test() {
-console.log("test");
-}
 "use strict";
-const canvasWidth = 400, canvasHeight = 300;
+function test() {
+    console.log("test");
+}
+
+const canvasWidth = 1080, canvasHeight = 700;
 let ctx;
 let n=0; 
-const divergence = 137.5;
-const c = 2;   
-
+let divergence = 137.5;
+let c = 2;   
+let strokeColor=`hsl(${n/5 % 181},80%,40%)`;
 let array=[];
 window.onload=init;
+let increase=1;
+let clear=3;
 
 function init(){
 	ctx = canvas.getContext("2d");
@@ -19,10 +22,81 @@ function init(){
 	ctx.fillRect(0,0,canvasWidth,canvasHeight);
     canvas.onclick=canvasClicked;
     update();
+    document.querySelector("#clearButton").onclick=clsPure;
+    
+    document.querySelector('#cValue').onchange = function(e){
+        clearCheck();
+        c=e.target.value;
+    }
+    document.querySelector('#dAngle').onchange = function(e){
+        clearCheck();
+        divergence=e.target.value;
+    }
+    document.querySelector('#increaseValue').onchange = function(e){
+        clearCheck();
+        increase=parseInt(e.target.value);
+    }
+    document.querySelector('#lineColorChooser').onchange = function(e){
+        clearCheck();
+        if (e.target.value == "emojiPattern"){
+            //let emoji1 = document.getElementById("emoji");
+            let emoji1= document.querySelector("#emoji");
+            let pattern1= ctx.createPattern(emoji1, "repeat");
+            strokeColor = pattern1;
+        }
+        else if (e.target.value == "linearGradient"){
+            	let grad = ctx.createLinearGradient(100, 0, 1000, 0);
+	            grad.addColorStop(0, 'red');
+	            grad.addColorStop(1 / 6, 'orange');
+	            grad.addColorStop(2 / 6, 'yellow');
+	            grad.addColorStop(3 / 6, 'green')
+	            grad.addColorStop(4 / 6, 'aqua');
+	            grad.addColorStop(5 / 6, 'blue');
+	            grad.addColorStop(1, 'purple');
+
+                strokeColor = grad;
+        }
+        else if (e.target.value == "radialGradient"){
+	           let grad = ctx.createRadialGradient(500,350, 20, 500, 350, 600);
+	           grad.addColorStop(0, 'red');
+	           grad.addColorStop(1 / 6, 'orange');
+	           grad.addColorStop(2 / 6, 'yellow');
+	           grad.addColorStop(3 / 6, 'green')
+	           grad.addColorStop(4 / 6, 'aqua');
+	           grad.addColorStop(5 / 6, 'blue');
+	           grad.addColorStop(1, 'purple');
+	           
+	           //ctx.fillStyle = grad;
+	           //ctx.fillRect(0,0,640,480);
+               strokeColor = grad;
+        }
+	}
+    document.querySelector('#clearSettings').onchange = function(e){
+        if (e.target.value == "yes"){
+            clear=1;
+        }
+        else if (e.target.value == "yesP"){
+            clear=2;
+        }
+        else{
+            clear=3;
+        }
+
+        
+	}
 }
 
 function update(){
     setTimeout(update,2000/80);
+    let colorCheck=document.querySelector('#lineColorChooser').value;
+    if(colorCheck=="HSL")
+        {
+            strokeColor=`hsl(${n/5 % 181},80%,40%)`;
+        }
+    else if(colorCheck=="Random")
+        {
+            strokeColor=getRandomColor();
+        }
     //requestAnimationFrame(update);
     for(let i=0;i<array.length; i++){
         array[i].n=loop(array[i]);
@@ -46,20 +120,45 @@ function loop(phyllotaxis){
     //let aDegrees = (n * divergence) % 256;
     //let color = `rgb(${aDegrees},0,255)`;
     //let color = getRandomColor();
-    let color = `hsl(${phyllotaxis.n/5 % 181},80%,40%)`;
+    let color = strokeColor;
 
-
-    drawCircle(ctx,x,y,2,color);
-    phyllotaxis.n++;
-    return phyllotaxis.n++;
+    n+=2;
+    if(document.querySelector('#lineColorChooser').value=="emojiPattern")
+    {
+        drawCircle(ctx,x,y,4,color);
+    }
+    else{
+        drawCircle(ctx,x,y,2,color);
+    }
+    phyllotaxis.n+=increase;
+    return phyllotaxis.n+=increase;
 }
-    
+function cls(){
+    ctx.clearRect(0,0,canvasWidth,canvasHeight);
+    ctx.fillRect(0,0,canvasWidth,canvasHeight);
+}
+function clsPure(){
+    array=[];
+    ctx.clearRect(0,0,canvasWidth,canvasHeight);
+    ctx.fillRect(0,0,canvasWidth,canvasHeight);
+}
+function clearCheck()
+{
+    if(clear==1)
+    {
+        array=[];
+        cls();
+    }
+    else if(clear==2)
+    {
+        cls();
+    }
+}
 // UTILS
 function getRandomColor(){
-	function getByte(){
-		return 55 + Math.round(Math.random() * 200);
-	}
-	return "rgba(" + getByte() + "," + getByte() + "," + getByte() + ",.8)";
+    var randomColor = '#'+Math.floor(Math.random()*16777215).toString(16);
+    return randomColor;
+
 }
 function canvasClicked(e){
     let rect = e.target.getBoundingClientRect();
