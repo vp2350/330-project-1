@@ -1,1 +1,104 @@
-"font"
+/** @format */
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@200;400;700&display=swap');
+img{
+    display: none;
+}
+body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    background-color: #3b4252;
+    color: #eceff4;
+}
+
+* {
+    font-family: 'Mulish', sans-serif;
+}
+
+label,
+button,
+select {
+    font-size: 1rem;
+}
+
+label {
+    line-height: 2rem;
+}
+
+#middle {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    background-color: #2e3440;
+    gap: 1rem;
+}
+
+#middle .controls .control {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 0.5rem;
+}
+
+#middle .controls {
+    padding-right: 1rem;
+}
+
+a {
+    text-decoration: none;
+    color: #d08770;
+    transition: color 200ms ease-in-out;
+}
+
+a:hover {
+    color: #81a1c1;
+}
+
+a:active {
+    color: #a3be8c;
+}
+
+button {
+    background-color: #d8dee9;
+    color: #2e3440;
+    padding: 0.5rem;
+    width: 10rem;
+    border: none;
+    border-radius: 0.5rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    transition: background-color 200ms ease-in-out, color 200ms ease-in-out;
+}
+
+button:hover {
+    background-color: #eceff4;
+    cursor: pointer;
+}
+
+button:active {
+    background-color: #a3be8c;
+    color: #eceff4;
+}
+
+select {
+    padding: 0.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: #d8dee9;
+    color: #2e3440;
+    transition: background-color 200ms ease-in-out, color 200ms ease-in-out;
+}
+
+select:hover {
+    background-color: #eceff4;
+    cursor: pointer;
+}
+
+select:active {
+    background-color: #a3be8c;
+    color: #eceff4;
+}
+
+#top,
+#bottom {
+    padding: 1rem;
+    background-color: #3b4252;
+}
