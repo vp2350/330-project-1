@@ -1,69 +1,137 @@
+<!-- @format -->
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="utf-8" />
-	<title>Phyllotaxis</title>
-	<style>canvas{ border: 1px solid black; }</style>
-	<script src="js/vpLIB.js">
-        
-	</script>
-</head>
-<body>
-<canvas id="canvas"></canvas>
-<section><h1>PHYLLOTAXIS PLAYGROUND!</h1></section>
-<section><h4>(Still need to do some css and code cleanup)</h4></section>
-<section><h3>Click anywhere to create a phyllotaxis</h3></section>
-<section>
-  <button id="clearButton">Clear Canvas</button>
-</section>
-<img id="emoji" src="grimacing-face-emoji-small.png" />
-<label>C-value: 
-	<select id="cValue">
-		<option value="1">1</option>
-		<option value="2" selected>2</option>
-		<option value="3">3</option>
- 		<option value="4">4</option>
-         <option value="5">5</option>
-	</select>
-</label>
-<label>Divergence Angle: 
-	<select id="dAngle">
-		<option value="137.5" selected>137.5</option>
-		<option value="-137.5">-137.5</option>
-		<option value="137.0">137.0</option>
- 		<option value="-137.0">-137.0</option>
-        <option value="138.0">138.0</option>
-        <option value="-138.0">-138.0</option>
-	</select>
-</label>
-<label>Dot Color Type: 
-	<select id="lineColorChooser">
-        <option value="HSL" selected>HSL</option>
-        <option value="Random">Random</option>
-        <option value="linearGradient">Linear Gradient</option>
-        <option value="radialGradient">Radial Gradient</option>
-        <option value="emojiPattern">Emoji</option>
-	</select>
-</label>
-<label>Radius Increase Rate: 
-	<select id="increaseValue">
-        <option value="1" selected>1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
+    <head>
+        <meta charset="utf-8" />
+        <title>Phyllotaxis Playground!</title>
+        <style>
+            canvas {
+                border: 1px solid black;
+            }
+        </style>
+        <script src="js/vpLIB.js"></script>
+        <script src="js/index.js"></script>
+        <link rel="stylesheet" href="css/default-styles.css" />
+    </head>
+    <body>
+        <section id="top"><h1>PHYLLOTAXIS PLAYGROUND!</h1></section>
+        <section id="middle">
+            <canvas id="canvas"></canvas>
 
-	</select>
-</label>
-<label>Clear Screen on Settings Change? 
-	<select id="clearSettings">
-        <option value="yes">Yes</option>
-        <option value="yesP">Yes, but keep radius progress</option>
-        <option value="no" selected>No</option>
-	</select>
-</label>
-</body>
+            <div class="controlPanel">
+                <section>
+                    <h3>Click anywhere to create a phyllotaxis</h3>
+                    <h3>Play with the settings to draw different phyllotaxes</h3>
+                </section>
+                <section>
+                    <button id="clearButton">Clear Canvas</button>
+                    <img id="emoji"  alt="hidden emoji" src="grimacing-face-emoji-small.png" />
+                    <img id="Image1" alt="hidden meme" src="https://filmdaily.co/wp-content/uploads/2020/09/amongusmemes-03-1.jpg" />
+                    <img id="Image2" alt="hidden meme" src="https://filmdaily.co/wp-content/uploads/2020/09/amongusmemes-05-1.jpg" />
+                    <img id="Image3" alt="hidden meme" src="https://filmdaily.co/wp-content/uploads/2020/09/amongusmemes-10-1.jpg" />
+                    <img id="Image4" alt="hidden meme" src="https://filmdaily.co/wp-content/uploads/2020/09/amongusmemes-12-1.jpg" />
+                    <img id="Image5" alt="hidden meme" src="https://cdn.ebaumsworld.com/2020/03/05/025050/86217793/gaming-meme-45.jpg" />
+                    <img id="Image6" alt="hidden meme" src="https://img.buzzfeed.com/buzzfeed-static/static/2018-08/20/17/asset/buzzfeed-prod-web-04/sub-buzz-24833-1534799890-4.jpg" />
+                    <img id="Image0" alt="hidden meme" src="https://filmdaily.co/wp-content/uploads/2020/09/amongusmemes-03-1.jpg" />
+                </section>
+                <br />
+                <div class="controls">
+                    <div class="control"
+                        ><label>Dot Padding:</label>
+                        <select id="cValue">
+                            <option value="1">1</option>
+                            <option value="2" selected>2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select></div
+                    >
+                    <div class="control"
+                        ><label>Divergence Angle:</label>
+                        <select id="dAngle">
+                            <option value="137.5" selected>137.5</option>
+                            <option value="-137.5">-137.5</option>
+                            <option value="137.0">137.0</option>
+                            <option value="-137.0">-137.0</option>
+                            <option value="138.0">138.0</option>
+                            <option value="-138.0">-138.0</option>
+                            <option value="138.5">138.5</option>
+                            <option value="-138.5">-138.5</option>
+                            <option value="139.0">139.0</option>
+                            <option value="-139.0">-139.0</option>
+                            <option value="140.0">140.0</option>
+                            <option value="-140.0">-140.0</option>
+                        </select></div
+                    >
+                    <div class="control"
+                        ><label>Dot Color Type:</label>
+                        <select id="lineColorChooser">
+                            <option value="HSL" selected>HSL</option>
+                            <option value="Random">Random</option>
+                            <option value="linearGradient"
+                                >Linear Gradient</option
+                            >
+                            <option value="radialGradient"
+                                >Radial Gradient</option
+                            >
+                            <option value="emojiPattern">Emoji</option>
+                            <option value="randomMeme">Random Meme</option>
+                        </select></div
+                    >
+                    <div class="control"
+                        ><label>Radius Increase Rate:</label>
+                        <select id="increaseValue">
+                            <option value="1" selected>1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                        </select></div
+                    >
+                    <div class="control"
+                        ><label>Clear Screen on Settings Change?</label>
+                        <select id="clearSettings">
+                            <option value="yes">Yes</option>
+                            <option value="yesP"
+                                >Yes, but keep previous progress
+                            </option>
+                            <option value="no" selected>No</option>
+                        </select>
+                    </div>
+                    <div class="control"
+                        ><label>
+                            Settings change affect previous Phyllotaxes?
+                        </label>
+                        <select id="previousSettings">
+                            <option value="yes">Yes</option>
+                            <option value="no" selected>No</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="bottom">
+            <h1>What is a Phyllotaxis?</h1>
+            <h4
+                >In botany, phyllotaxis or phyllotaxy is the arrangement of
+                leaves on a plant stem (from Ancient Greek phýllon "leaf" and
+                táxis "arrangement"). Phyllotactic spirals form a distinctive
+                class of patterns in nature. The term was coined by Charles
+                Bonnet to describe the arrangement of leaves on a plant.</h4
+            >
+            <h4
+                ><a
+                    href="https://en.wikipedia.org/wiki/Phyllotaxis"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Phyllotaxis Wiki</a
+                ></h4
+            >
+        </section>
+    </body>
 </html>
