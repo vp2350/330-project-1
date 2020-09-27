@@ -55,7 +55,7 @@ This selector lets the user decide whether to apply the new settings to previous
 
 ### Bugs
 
-Currently the only known bug is that with some particular settings (*Clear Screen on settings change* and *Settings change affect previous Phyllotaxes*) when combined in a particular order prevent
+Currently the only known bug is that with some particular settings (`Clear Screen on settings change` and `Settings change affect previous Phyllotaxes`) when combined in a particular order prevent
 the current Dot Color from functioning properly sometimes. Still unable to 100% recreate the bug.
 
 Switching the Dot Color to a different one then switching back to the required one fixes the problem. 
